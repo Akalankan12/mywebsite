@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lanka GO - Book Your Ride</title>
+    <!-- Include Google Fonts and Animate.css -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/animate.css" rel="stylesheet"> <!-- Include Animate.css for animations -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome for icons -->
+    <style>
+        /* General Styles */
+        :root {
+            --primary-color: #28a745;
+            --secondary-color: #333;
+            --bg-light: #f4f4f4;
+            --bg-dark: #222;
+            --text-light: white;
+            --text-dark: #333;
+            --border-light: #ddd;
+            --border-dark: #444;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border: 5px solid #28a745;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        header img {
+            width: 150px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        header h1 {
+            margin-top: 10px;
+            font-size: 2.5em;
+        }
+
+        header p {
+            font-size: 1.2em;
+        }
+
+        /* Sticky Navigation */
+        nav {
+            background-color: var(--bg-light);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            background: url('your-hero-image.jpg') no-repeat center center/cover;
+            color: var(--text-light);
+            padding: 100px 20px;
+            position: relative;
+            box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.5);
+            transition: background 0.3s ease;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .hero h1, .hero p {
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* About Us Section */
+        #about {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #28a745, #333);
+            color: var(--text-light);
+        }
+
+        #about h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        #about p {
+            font-size: 1.2em;
+            margin-bottom: 50px;
+            text-align: center;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .feature-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            text-align: center;
+            width: 100%;
+            max-width: 300px;
+            animation: fadeInUp 2s ease-out;
+            transition: background 0.3s ease;
+        }
+
+        .feature-box:hover {
+            background: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .feature-box h4 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .feature-box p {
+            font-size: 1em;
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Bounce Animation for FAB */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Booking Form */
+        .booking-form {
+            background: var(--text-light);
+            padding: 30px;
+            margin: 20px auto;
+            border-radius: 8px;
+            max-width: 600px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid var(--border-light);
+            font-size: 1em;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            cursor: pointer;
+            border: none;
+            font-size: 1.1em;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            background-color: #ff4081;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50%;
+            font-size: 18px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 1000;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            animation: bounce 1s infinite;
+        }
+
+        .fab:hover {
+            background-color: #f50057;
+            transform: scale(1.1) rotate(20deg);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .fab:active {
+            transform: scale(1.05);
+        }
+
+        .fab i {
+            font-size: 24px;
+            transition: transform 0.2s ease;
+        }
+
+        .fab:hover i {
+            transform: rotate(-20deg);
+        }
+
+        .fab-text {
+            display: none;
+            font-size: 14px;
+            color: white;
+            margin-left: 10px;
+        }
+
+        .fab:hover .fab-text {
+            display: inline-block;
+        }
+
+        /* Call Now FAB */
+        .fab-call {
+            position: fixed;
+            right: 30px;
+            bottom: 100px;
+            background-color: #ff4081;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50%;
+            font-size: 18px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 1000;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            animation: bounce 1s infinite;
+        }
+
+        .fab-call:hover {
+            background-color: #f50057;
+            transform: scale(1.1) rotate(20deg);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .fab-call:active {
+            transform: scale(1.05);
+        }
+
+        .fab-call i {
+            font-size: 24px;
+            transition: transform 0.2s ease;
+        }
+
+        .fab-call:hover i {
+            transform: rotate(-20deg);
+        }
+
+        .fab-call-text {
+            display: none;
+            font-size: 14px;
+            color: white;
+            margin-left: 10px;
+        }
+
+        .fab-call:hover .fab-call-text {
+            display: inline-block;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="your-logo.png" alt="Lanka GO Logo" class="animate__animated animate__fadeInDown">
+    <h1>Lanka GO</h1>
+    <p>Your Ride, Our Responsibility</p>
+</header>
+
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="#"><img src="your-logo.png" alt="Logo" style="width: 120px;"></a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="#booking">Book a Ride</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="hero animate__animated animate__fadeIn">
+    <div class="hero-overlay"></div>
+    <h1>Fast, Reliable, Affordable</h1>
+    <p>Book your ride with Lanka GO now!</p>
+    <a href="#booking" class="btn btn-success">Book a Ride</a>
+</section>
+
+<section id="about" class="animate__animated animate__fadeIn">
+    <div class="container">
+        <h2>About Us</h2>
+        <p>At Lanka GO, we pride ourselves on delivering a seamless and luxurious ride experience. Our service is designed for those who value comfort, reliability, and convenience. Whether you need a ride for business or leisure, our professional drivers are always ready to serve you.</p>
+
+        <div class="row features">
+            <div class="col-md-4 feature-box animate__animated animate__fadeInUp animate__delay-1s">
+                <div class="feature-icon">🚗</div>
+                <h4>Fast & Reliable</h4>
+                <p>Our vehicles are always ready and on time, ensuring you reach your destination quickly and safely.</p>
+            </div>
+
+            <div class="col-md-4 feature-box animate__animated animate__fadeInUp animate__delay-2s">
+                <div class="feature-icon">🛋️</div>
+                <h4>Comfortable Rides</h4>
+                <p>From sedans to SUVs, our fleet is designed to provide the highest level of comfort for all passengers.</p>
+            </div>
+
+            <div class="col-md-4 feature-box animate__animated animate__fadeInUp animate__delay-3s">
+                <div class="feature-icon">🛡️</div>
+                <h4>Safety First</h4>
+                <p>We prioritize your safety with professionally trained drivers and fully insured vehicles.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="booking">
+    <div class="booking-form">
+        <h2>Book a Ride</h2>
+        <form id="bookingForm" action="https://formspree.io/f/mnnnqvpq" method="POST">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" class="form-control" placeholder="Enter your phone number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="pickup">Pickup Location:</label>
+                <input type="text" id="pickup" name="pickup" class="form-control" placeholder="Enter pickup location" required>
+            </div>
+
+            <div class="form-group">
+                <label for="dropoff">Dropoff Location:</label>
+                <input type="text" id="dropoff" name="dropoff" class="form-control" placeholder="Enter dropoff location" required>
+            </div>
+
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="time">Time:</label>
+                <input type="time" id="time" name="time" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="vehicle">Select Vehicle:</label>
+                <select id="vehicle" name="vehicle" class="form-control" required>
+                    <option value="sedan">Sedan</option>
+                    <option value="suv">SUV</option>
+                    <option value="van">Van</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-success">Book Now</button>
+        </form>
+    </div>
+</section>
+
+<script>
+    document.getElementById('bookingForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+    const form = event.target;
+
+    // Create a FormData object from the form
+    const formData = new FormData(form);
+
+    // Send form data to Formspree endpoint
+    fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            // Redirect to the thank you page after successful booking
+            window.location.href = 'thankyou.html'; // Replace with the correct path to your thank you page
+        } else {
+            alert('Oops! Something went wrong. Please try again later.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Oops! Something went wrong. Please try again later.');
+    });
+});
+
+</script>
+
+
+<!-- Floating Action Buttons -->
+<a href="#booking" class="fab">
+    <i class="fa fa-car"></i>
+    <span class="fab-text">Let's Go!</span>
+</a>
+
+<div class="fab-call" onclick="makeCall()">
+    <i class="fas fa-phone"></i>
+    <span class="fab-call-text">Call Now</span>
+</div>
+
+<script>
+    function makeCall() {
+        window.location.href = "tel:+1234567890"; // Replace with your actual phone number
+    }
+</script>
+
+<footer>
+    <p>&copy; 2024 Lanka GO | All rights reserved</p>
+</footer>
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    document.getElementById('bookingForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        alert('Thank you for booking with Lanka GO!');
+    });
+</script>
+</body>
+</html>

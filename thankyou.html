@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Lanka GO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Include Animate.css for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        /* General Page Style */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom right, #1E3A8A, #2563EB); /* Blue gradient background */
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        /* Page Container with Beautiful Frame */
+        .page-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            border: 1px solid #ddd;
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Thank You Message */
+        .thank-you-message {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #F59E0B; /* Gold color */
+        }
+
+        /* Button Styling */
+        .btn-home {
+            margin-top: 20px;
+            font-size: 1.1em;
+            background-color: #2563EB; /* Blue background for the button */
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .btn-home:hover {
+            transform: scale(1.1);
+            background-color: #1D4ED8; /* Darker blue on hover */
+        }
+
+        /* Adding some spacing and animation to the paragraph */
+        p {
+            font-size: 1.1em;
+            color: #555;
+            margin-top: 20px;
+        }
+
+        /* Icon Styling (Big Icons) */
+        .icon {
+            font-size: 4em;
+            color: #F59E0B; /* Gold color for icons */
+            margin-right: 15px;
+            vertical-align: middle;
+        }
+
+        /* Home Icon Specific Dark Color */
+        .btn-home .fas.fa-home {
+            color: #333;
+        }
+
+        /* Slide-in Animation for Page Content */
+        .animate__slideInUp {
+            animation-duration: 1.5s !important;
+            animation-delay: 0.5s;
+        }
+
+        /* Position Big Icon at the bottom */
+        .bottom-icon {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        /* Bounce Animation */
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Gradient Hover Effect for Button */
+        .btn-home:hover {
+            background: linear-gradient(to right, #1D4ED8, #2563EB);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Page Container with a Beautiful Frame -->
+    <div class="page-container">
+        <div class="thank-you-message animate__animated animate__fadeIn animate__delay-1s">
+            <i class="fas fa-check-circle icon"></i> Thank you for booking with Lanka GO!
+        </div>
+        <p class="animate__animated animate__fadeIn animate__delay-2s">
+            <i class="fas fa-car icon"></i> Your ride is being processed, and our driver will reach out to you shortly.
+        </p>
+
+        <a href="n.html" class="btn-home animate__animated animate__bounceIn animate__delay-3s">
+            <i class="fas fa-home icon"></i> Return to Home
+        </a>
+
+        <!-- Big Icon at the Bottom -->
+        <div class="bottom-icon animate__animated animate__fadeIn animate__delay-4s">
+            <i class="fas fa-thumbs-up icon"></i> <!-- Big Icon at the bottom -->
+        </div>
+    </div>
+
+    <!-- Add jQuery and Animate.css for triggering animations -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.js"></script>
+
+    <script>
+        // This will trigger the animation once the page has fully loaded
+        $(document).ready(function() {
+            $('body').addClass('animate__animated animate__fadeIn');
+        });
+    </script>
+
+</body>
+</html>
